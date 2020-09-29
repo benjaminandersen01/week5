@@ -1,0 +1,90 @@
+<html>
+	<head>
+	<title>Week 5 Adventure Game</title>
+	</head>
+	
+	<body>
+		<h1>Adventure Time</h1>
+		<button id= "attackButton">Attack</button>
+		<button id= "potionButton">Drink Potion</button>
+		<p>Hero Name: <span id="heroName"></span></p>
+		<p>Heros HP: <span id="heroHP"></span> </p>	
+		<p>Enemy Name: <span id="enemyName"></span> </p>	
+		<p>Enemy HP: <span id="enemyHP"></span> </p>
+
+	
+		<script src="human.js"></script>
+		<script src="monsters.js"></script>
+		
+		
+		<script>
+		var attackButton = document.getElementById("attackButton");
+		attackButton.addEventListener("click", skirmish);
+		var potionButton = document.getElementById("potionButton")
+		potionButton.addEventListener("click", potion)
+		var heroName = document.getElementById("heroName");
+		var heroHP = document.getElementById("heroHP");
+		var enemyName = document.getElementById("enemyName");
+		var enemyHP = document.getElementById("enemyHP");
+		has_potion = new Boolean;
+		var num_potion = 1;
+		
+		
+
+	
+		console.log(human);			
+			var game = {
+				user: human,
+				monsters: mobs,	
+				current_enemy: {},
+			}
+			var current_enemy_index = generateRandomNumber(game.monsters.length);
+   				console.log(current_enemy_index);
+			var current_enemy = game.monsters[current_enemy_index];
+				console.log(current_enemy);
+				game.current_enemy = current_enemy;
+		function generateRandomNumber(maxNumber){
+		return Math.floor( Math.random() * maxNumber );
+		}
+
+		function skirmish(){
+			game.current_enemy.hp = game.current_enemy.hp - game.user.damage;
+			game.user.hp = game.user.hp - game.current_enemy.damage;
+			console.log(game);
+			
+			if (game.user.hp <= 0){
+				alert("You were slayn by the beast! Your journey has abruptly ended.")
+			}
+			else if(game.current_enemy.hp <=0){
+				alert("You have slayn the beast! You live to see another day.")
+			}
+			else{
+				alert("Your attacks connect, yet both you and the beast still stand. The Battle rages on!")
+			}
+			heroName.innerText = game.user.name;
+			heroHP.innerText = game.user.hp;
+			enemyName.innerText = game.current_enemy.name;
+			enemyHP.innerText = game.current_enemy.hp;
+		}
+		function potion(){
+			if(num_potions = 1, has_potion = true){
+				
+				game.user.hp = game.user.hp + 10;
+				
+				
+			}
+
+			 else if(num_potions <=0){
+				has_potion = false;
+				alert("You backpack must have a hole because you dont have any more potions with you!");
+			
+			}
+			num_potion - 1;
+		}
+	</script>
+		
+
+	</p>
+</p>
+	</body>
+</html>

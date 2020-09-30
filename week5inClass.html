@@ -26,12 +26,7 @@
 		var heroHP = document.getElementById("heroHP");
 		var enemyName = document.getElementById("enemyName");
 		var enemyHP = document.getElementById("enemyHP");
-		has_potion = new Boolean;
 		var num_potion = 1;
-		
-		
-
-	
 		console.log(human);			
 			var game = {
 				user: human,
@@ -67,19 +62,17 @@
 			enemyHP.innerText = game.current_enemy.hp;
 		}
 		function potion(){
-			if(num_potions = 1, has_potion = true){
+			if(num_potion == 1){
 				
 				game.user.hp = game.user.hp + 10;
-				
-				
+				num_potion--;
+
 			}
 
-			 else if(num_potions <=0){
-				has_potion = false;
+			 else if(num_potion <=0){
+				
 				alert("You backpack must have a hole because you dont have any more potions with you!");
-			
 			}
-			num_potion - 1;
 		}
 	</script>
 		

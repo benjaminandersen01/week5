@@ -1,2 +1,2 @@
 # week5
-Currently the game works great for just a single battle against an enemy, but my potions have an issue where they seem to be infinte at the moment, even when num_potions is below 0.
+This is my first attempt and very simple adventure game with a working functions for attacks and potion usage, this is only the begining of our adventure stay tuned for more features!

@@ -1,12 +1,25 @@
 <html>
 	<head>
 	<title>Week 5 Adventure Game</title>
-	</head>
+	<style>
+		img {
+			width: 500px;
+		}
+		div#output {
+			width: 600px;
+			height: 200px;
+			background-color: x#FFF8E7;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
 	
 	<body>
 		<h1>Adventure Time</h1>
+		
 		<button id= "attackButton">Attack</button>
 		<button id= "potionButton">Drink Potion</button>
+		<button id = "dropSystem">Test Drop System</button>
 		<p>Hero Name: <span id="heroName"></span></p>
 		<p>Heros HP: <span id="heroHP"></span> </p>	
 		<p>Enemy Name: <span id="enemyName"></span> </p>	
@@ -15,11 +28,17 @@
 	
 		<script src="human.js"></script>
 		<script src="monsters.js"></script>
+		<script src="items.js"></script>
 		
-		
+		<img id = images1 src=''/>	
 		<script>
+		
+
+		var dropSystemButton = document.querySelector("#dropSystem");
+        dropSystemButton.addEventListener("click", testDropSystem);
 		var attackButton = document.getElementById("attackButton");
 		attackButton.addEventListener("click", skirmish);
+		attackButton.addEventListener("click", updatePage);
 		var potionButton = document.getElementById("potionButton")
 		potionButton.addEventListener("click", potion)
 		var heroName = document.getElementById("heroName");
@@ -37,11 +56,37 @@
    				console.log(current_enemy_index);
 			var current_enemy = game.monsters[current_enemy_index];
 				console.log(current_enemy);
+				
 				game.current_enemy = current_enemy;
+			var images = [
+                        {
+                            name: "Gelatinous Cube",
+							image: "https://www.epicpath.org/images/thumb/8/80/Gelatinous_cube.jpg/550px-Gelatinous_cube.jpg",
+	
+                        },
+                        {
+							name: "Orc",
+							image: "https://i.pinimg.com/originals/b3/8c/19/b38c19c5188aa37ad4b26674de7b7162.jpg",
+                        },
+                        {
+							name: "Snake King",
+							image: "https://i.pinimg.com/originals/bb/50/43/bb5043df1ac0b108df3c74f6faff77ec.jpg"   
+                        }
+                    ];
+				
+			
+
+			
 		function generateRandomNumber(maxNumber){
 		return Math.floor( Math.random() * maxNumber );
 		}
+		function updatePage(id){
 
+		document.getElementById("images1").src = images[id].image;
+
+
+}
+		
 		function skirmish(){
 			game.current_enemy.hp = game.current_enemy.hp - game.user.damage;
 			game.user.hp = game.user.hp - game.current_enemy.damage;
@@ -60,6 +105,7 @@
 			heroHP.innerText = game.user.hp;
 			enemyName.innerText = game.current_enemy.name;
 			enemyHP.innerText = game.current_enemy.hp;
+			updatePage(current_enemy_index);
 		}
 		function potion(){
 			if(num_potion == 1){
@@ -73,7 +119,13 @@
 				
 				alert("You backpack must have a hole because you dont have any more potions with you!");
 			}
+
 		}
+		var imgTag = document.querySelectorAll("img")[0];
+
+		
+
+		updatePage(current_enemy_index);
 	</script>
 		
 

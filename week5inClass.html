@@ -8,7 +8,7 @@
 		div#output {
 			width: 600px;
 			height: 200px;
-			background-color: x#FFF8E7;
+			background-color: #FFF8E7;
 			overflow-y: scroll;
 		}
 	</style>
@@ -25,7 +25,7 @@
 		<p>Enemy Name: <span id="enemyName"></span> </p>	
 		<p>Enemy HP: <span id="enemyHP"></span> </p>
 
-	
+		<div id="output"></div>
 		<script src="human.js"></script>
 		<script src="monsters.js"></script>
 		<script src="items.js"></script>
@@ -90,14 +90,14 @@
 			console.log(game);
 			
 			if (game.user.hp <= 0){
-				alert("You were slayn by the beast! Your journey has abruptly ended.")
+				genOutput("You were slayn by the beast! Your journey has abruptly ended.")
 			}
 			else if(game.current_enemy.hp <=0){
-				alert("You have slayn the beast! You live to see another day.")
+				genOutput("You have slayn the beast! You live to see another day.")
 				testDropSystem();
 			}
 			else{
-				alert("Your attacks connect, yet both you and the beast still stand. The Battle rages on!")
+				genOutput("Your attacks connect, yet both you and the beast still stand. The Battle rages on!")
 			}
 			heroName.innerText = game.user.name;
 			heroHP.innerText = game.user.hp;
@@ -120,8 +120,10 @@
 
 		}
 		var imgTag = document.querySelectorAll("img")[0];
-
-		
+		var outputRef = document.querySelector("#output");
+		function genOutput(message){
+			outputRef.innerHTML = `<p>${message}</p>${outputRef.innerHTML}`	
+		}
 
 		updatePage(current_enemy_index);
 	</script>
